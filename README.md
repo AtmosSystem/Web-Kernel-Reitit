@@ -1,6 +1,8 @@
 # Atmos Web Kernel for [Reitit](https://github.com/metosin/reitit)
 
-This library is the web core of atmos systems, it has commons functionality using *Reitit*.
+[![Dependencies Status](https://versions.deps.co/AtmosSystem/atmos-web-kernel-reitit/status.png)](https://versions.deps.co/AtmosSystem/atmos-web-kernel-reitit)
+
+This library is the web core of atmos systems, it has commons functionality using **Reitit**.
 
 ## Installation
 ```clojure
@@ -11,5 +13,4 @@ This library is the web core of atmos systems, it has commons functionality usin
 
 Copyright © 2020 Santiago de Pedro
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or any later version.
