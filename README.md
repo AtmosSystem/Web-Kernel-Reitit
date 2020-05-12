@@ -1,6 +1,6 @@
 # Atmos Web Kernel using [Reitit](https://github.com/metosin/reitit)
 
-[![Dependencies Status](https://versions.deps.co/AtmosSystem/atmos-web-kernel-reitit/status.png)](https://versions.deps.co/AtmosSystem/atmos-web-kernel-reitit)
+[![Dependencies Status](https://versions.deps.co/AtmosSystem/Kernel/status.svg)](https://versions.deps.co/AtmosSystem/Kernel)
 
 This library is the web core of atmos systems, it has commons functionality using **Reitit**.
 
