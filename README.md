@@ -1,4 +1,4 @@
-# Atmos Web Kernel for [Reitit](https://github.com/metosin/reitit)
+# Atmos Web Kernel using [Reitit](https://github.com/metosin/reitit)
 
 [![Dependencies Status](https://versions.deps.co/AtmosSystem/atmos-web-kernel-reitit/status.png)](https://versions.deps.co/AtmosSystem/atmos-web-kernel-reitit)
 
