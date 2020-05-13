@@ -1,4 +1,4 @@
-(defproject atmos-web-kernel-reitit "0.1.0-SNAPSHOT"
+(defproject atmos-web-kernel-reitit "0.1.0"
   :description "This library is the web core of atmos systems, it has commons functionality using *Reitit*."
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
