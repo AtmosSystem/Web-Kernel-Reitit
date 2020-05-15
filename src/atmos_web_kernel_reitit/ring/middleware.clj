@@ -6,7 +6,7 @@
     [reitit.ring.middleware.parameters :as parameters]
     [reitit.ring.middleware.multipart :as multipart]))
 
-(def wrap-cors-middleware {:name        ::wrap-cors-middleware
+(def wrap-cors-middleware {:name        ::cors-middleware
                            :description "Ring CORS middleware."
                            :wrap        (fn [handler] (wrap-cors handler
                                                                  :access-control-allow-origin
