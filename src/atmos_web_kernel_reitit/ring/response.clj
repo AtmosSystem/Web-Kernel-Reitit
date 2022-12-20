@@ -16,6 +16,6 @@
    :headers {}
    :body    data})
 
-(def responses {:ok           response
-                :bad-request  bad-request-response*
-                :server-error server-error-request-response*})
+(def responses {:200 response
+                :400 bad-request-response*
+                :500 server-error-request-response*})
