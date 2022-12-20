@@ -1,4 +1,3 @@
-[![CircleCI](https://circleci.com/gh/AtmosSystem/atmos-web-kernel-reitit.svg?style=svg)](https://circleci.com/gh/AtmosSystem/atmos-web-kernel-reitit)
 
 # Atmos Web Kernel using [Reitit](https://github.com/metosin/reitit)
 
