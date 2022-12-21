@@ -16,20 +16,20 @@
         :args (s/cat :data any? :status (s/? keyword?))
         :ret map?)
 
-(defmacro web-request
+(defmacro web-handler
   "Create a web request handler."
   [handler-fn]
   `(fn [request#]
      (try
-       (web-response (~handler-fn request#))
-
+       (~handler-fn request#)
        (catch Exception e# (handle-exception e# request#)))))
 
 (defn web-router
   "Create a web router."
-  [routes & {:keys [data middleware] :or {data       {}
-                                          middleware []}}]
-  (ring/router routes {:data data :middleware middleware}))
+  ([routes options]
+   (ring/router routes options))
+  ([routes]
+   (ring/router routes)))
 
 (defn ring-app
   "Create a ring app."
