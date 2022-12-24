@@ -6,7 +6,7 @@
 
 (defn exception-data
   "Get exception data."
-  [exception]
+  [^Exception exception]
   (let [exception-message (.getMessage exception)
         exception-type (.getCanonicalName (.getClass exception))
 

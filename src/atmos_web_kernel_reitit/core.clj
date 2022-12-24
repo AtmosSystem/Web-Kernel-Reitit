@@ -1,43 +1,35 @@
 (ns atmos-web-kernel-reitit.core
-  (:require [reitit.ring :as ring]
-            [muuntaja.core :as m]
-            [atmos-web-kernel-reitit.ring.middleware :refer :all]
+  (:require [atmos-web-kernel-reitit.exception :refer [handle-exception]]
             [atmos-web-kernel-reitit.ring.response :refer [responses]]
-            [atmos-web-kernel-reitit.exception :refer [handle-exception]]
-            [clojure.spec.alpha :as s]))
+            [clojure.spec.alpha :as s]
+            [reitit.ring :as ring]))
 
 (defn web-response
   "Create a web response."
-  ([data response-type]
-   (let [response-fn (responses response-type)]
+  ([data status]
+   (let [response-fn (status responses)]
      (response-fn data)))
   ([data]
-   (web-response data :ok)))
+   (web-response data :200)))
 
 (s/fdef web-response
-        :args (s/cat :data any? :response-type (s/? keyword?))
+        :args (s/cat :data any? :status (s/? keyword?))
         :ret map?)
 
-(defmacro web-request
+(defmacro web-handler
   "Create a web request handler."
   [handler-fn]
   `(fn [request#]
      (try
-       (web-response (~handler-fn request#))
-
+       (~handler-fn request#)
        (catch Exception e# (handle-exception e# request#)))))
 
 (defn web-router
   "Create a web router."
-  [routes & {:keys [data middleware] :or {data       {}
-                                          middleware []}}]
-
-  (let [middleware (if (empty? middleware) default-middleware
-                                           (into [] (concat middleware default-middleware)))
-        data (assoc data :muuntaja m/instance
-                         :middleware middleware)]
-
-    (ring/router routes {:data data})))
+  ([routes options]
+   (ring/router routes options))
+  ([routes]
+   (ring/router routes)))
 
 (defn ring-app
   "Create a ring app."
