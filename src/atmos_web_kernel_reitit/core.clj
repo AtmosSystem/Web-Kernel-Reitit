@@ -26,8 +26,8 @@
        (let [request# (with-meta request# {:data-de-serializer ~data-de-serializer :data-serializer ~data-serializer})]
          (try
            (if ~data-serializer
-             (serializer/serialize (~handler-fn request# ~data-de-serializer) ~data-serializer)
-             (~handler-fn request# ~data-de-serializer))
+             (serializer/serialize (~handler-fn request#) ~data-serializer)
+             (~handler-fn request#))
            (catch Exception e# (handle-exception e# request#)))))))
 
 (defn web-router
