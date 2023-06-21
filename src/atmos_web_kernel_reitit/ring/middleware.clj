@@ -6,5 +6,9 @@
                    :wrap        (fn [handler]
                                   (fn [request]
                                     (let [response (handler request)
-                                          [data status] (if (vector? response) response [response :200])]
-                                      (c/web-response data status))))})
+                                          {:keys [data http-status]} (if (and (map? response)
+                                                                              (contains? response :data)
+                                                                              (contains? response :http-status))
+                                                                       response
+                                                                       {:data response :http-status :200})]
+                                      (c/web-response data http-status))))})
