@@ -1,6 +1,5 @@
 (ns atmos-web-kernel-reitit.core
-  (:require [atmos-web-kernel-reitit.exception :refer [handle-exception]]
-            [atmos-web-kernel-reitit.ring.response :refer [responses]]
+  (:require [atmos-web-kernel-reitit.ring.response :refer [responses]]
             [clojure.spec.alpha :as s]
             [reitit.ring :as ring]))
 
@@ -20,9 +19,7 @@
   "Create a web request handler."
   [handler-fn]
   `(fn [request#]
-     (try
-       (~handler-fn request#)
-       (catch Exception e# (handle-exception e# request#)))))
+     (~handler-fn request#)))
 
 (defn web-router
   "Create a web router."
