@@ -1,14 +1,14 @@
 (ns atmos-web-kernel-reitit.ring.middleware
-  (:require [atmos-web-kernel-reitit.core :as c]))
+  (:require [atmos-web-kernel-reitit.core :as c]
+            [clojure.spec.alpha :as s]))
+
+(s/def ::status-with-response (s/map-of pos-int? any? :count 1))
 
 (def web-response {:name        ::web-response
                    :description "Middleware to add a ring-valid response"
                    :wrap        (fn [handler]
                                   (fn [request]
                                     (let [response (handler request)
-                                          {:keys [data http-status]} (if (and (map? response)
-                                                                              (contains? response :data)
-                                                                              (contains? response :http-status))
-                                                                       response
-                                                                       {:data response :http-status :200})]
-                                      (c/web-response data http-status))))})
+                                          [http-status data] (if (s/valid? ::status-with-response response)
+                                                               response {200 response})]
+                                      (c/web-response data (keyword (str http-status))))))})

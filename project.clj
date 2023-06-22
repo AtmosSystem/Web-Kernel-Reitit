@@ -10,7 +10,4 @@
                  [javax.servlet/javax.servlet-api "4.0.1"]
                  ; Ring
                  [metosin/reitit-ring "0.5.18"]]
-  :repositories [["releases" {:url           "https://clojars.org/repo"
-                              :username      :env/CLOJAR_USERNAME
-                              :password      :env/CLOJAR_PASSWORD
-                              :sign-releases false}]])
+  :profiles {:dev {:dependencies [[org.clojure/test.check "0.9.0"]]}})
