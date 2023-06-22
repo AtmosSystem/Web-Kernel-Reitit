@@ -10,5 +10,5 @@
                                   (fn [request]
                                     (let [response (handler request)
                                           [http-status data] (if (s/valid? ::status-with-response response)
-                                                               response {200 response})]
+                                                               (into [] (first response)) [200 response])]
                                       (c/web-response data (keyword (str http-status))))))})
