@@ -5,5 +5,6 @@
                   :201 (response-> 201)
                   :204 (response-> 204)
                   :400 (response-> 400)
+                  :401 (response-> 401)
                   :404 (response-> 404)
                   :500 (response-> 500)}))
