@@ -4,11 +4,11 @@
 
 (s/def ::status-with-response (s/map-of pos-int? any? :count 1))
 
-(def web-response {:name        ::web-response
-                   :description "Middleware to add a ring-valid response"
-                   :wrap        (fn [handler]
-                                  (fn [request]
-                                    (let [response (handler request)
-                                          [http-status data] (if (s/valid? ::status-with-response response)
-                                                               (into [] (first response)) [200 response])]
-                                      (c/web-response data (keyword (str http-status))))))})
+(def web-response-middleware {:name        ::web-response
+                              :description "Middleware to add a ring-valid response"
+                              :wrap        (fn [handler]
+                                             (fn [request]
+                                               (let [response (handler request)
+                                                     [http-status data] (if (s/valid? ::status-with-response response)
+                                                                          (into [] (first response)) [200 response])]
+                                                 (c/web-response data (keyword (str http-status))))))})

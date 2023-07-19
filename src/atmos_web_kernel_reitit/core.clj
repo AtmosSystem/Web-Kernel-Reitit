@@ -15,11 +15,10 @@
         :args (s/cat :data any? :status (s/? keyword?))
         :ret map?)
 
-(defmacro web-handler
+(defn request-handler
   "Create a web request handler."
   [handler-fn]
-  `(fn [request#]
-     (~handler-fn request#)))
+  (fn [request] (handler-fn request)))
 
 (defn web-router
   "Create a web router."
