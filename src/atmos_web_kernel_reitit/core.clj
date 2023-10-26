@@ -29,5 +29,7 @@
 
 (defn ring-app
   "Create a ring app."
-  [router default-handler]
-  (ring/ring-handler router default-handler))
+  ([router default-handler options]
+   (ring/ring-handler router default-handler options))
+  ([router default-handler]
+   (ring/ring-handler router default-handler)))
